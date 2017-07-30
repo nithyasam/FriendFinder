@@ -17,13 +17,12 @@ module.exports = function(app) {
 
   function findMatch(scores){
   	let resultArr = [];
-
     friendsData.forEach((eachFriend) => {
       resultArr.push(eachFriend.scores.reduce((sum, value, index) => {
         return sum + Math.abs(scores[index] - value);
       },0));
     });
-    
+
     let min = Math.min(...resultArr);
     let pos = resultArr.indexOf(min);
     return pos;
