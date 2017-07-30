@@ -154,7 +154,7 @@
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
          Submit</button>
          <br>
-         <a href="/api/friends">API Friends List </a>| <a href="#"> GitHub Repo</a>
+         <a href="/api/friends">API Friends List </a>| <a href="https://github.com/nithyasam/FriendFinder"> GitHub Repo</a>
        </div>
        <!-- Modal -->
        <div id="myModal" class="modal fade" role="dialog">
@@ -191,13 +191,11 @@
         $("#submit").on("click", function(){
 
           function validateInput() {
-            console.log("inside validateInput");
             var fieldValidation = true;
             $('.form-control').each(function() {
               if ( $(this).val() === "" )
                 fieldValidation = false;
             });
-
             $('.chosen-select').each(function() {
               if( $(this).val() === "")
                 fieldValidation = false;
@@ -210,13 +208,11 @@
             for (i=1; i<11; i++){
               scoreArr.push(parseInt($("#q"+i).val()));
             }
-
             var personSurvey = {
               "name" : $("#name").val().trim(),
               "photo": $("#photo").val().trim(),
               "scores": JSON.stringify(scoreArr)
             };
-            
             var currentURL = window.location.origin;
             
             $.post(currentURL + "/api/addSurvey", personSurvey, function(data){
